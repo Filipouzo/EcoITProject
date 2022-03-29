@@ -17,6 +17,7 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('nickname', TextType::class, [
+                'required' => false,
                 'label' => 'Votre pseudo',
                 'attr' => [
                     'placeholder' => 'pseudo'
