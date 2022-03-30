@@ -6,20 +6,21 @@
     <meta name="description" content="Site de formation à l'éco-conception web">
     <title>{% block title %}EcoIT{% endblock %}</title>
     {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
-
-
 </head>
-<body>
-<div class="{#fixed-top#}">
-    {% include 'base/header.html.twig'%}
-    {% include 'base/nav.html.twig'%}
-</div>
 
-<div class="p-5 mt-5">
 
-    {% block body %}{% endblock %}
-</div>
-{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+<body class="container">
+
+    <div class="{#fixed-top#}">
+        {% include 'base/header.html.twig'%}
+        {% include 'base/nav.html.twig'%}
+    </div>
+
+    <div class="p-5 mt-5">
+        {% block body %}{% endblock %}
+    </div>
+
+    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 </body>
 
 </html>

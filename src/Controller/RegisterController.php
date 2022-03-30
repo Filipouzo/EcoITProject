@@ -17,7 +17,7 @@ class RegisterController extends AbstractController
 
     public function __construct(private ManagerRegistry $doctrine) {}
 
-    #[Route('/register', name: 'app_connexion')]
+    #[Route(path: '/register', name: 'app_enregistrement_apprenant')]
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher ): Response
     {
         $user = new User();
@@ -27,15 +27,24 @@ class RegisterController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-                $user = $form->getData();
+            $user = $form->getData();
 
-                $password = $passwordHasher->hashPassword($user, $user->getPassword());
-                $user->setPassword($password);
+            $password = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($password);
 
-                $em = $this->doctrine->getManager();
-                $em->persist($user);
-                $em->flush();
-            }
+            $em = $this->doctrine->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Vous êtes maintenant enregistré en tant qu\'apprenant !'
+            );
+
+//            return $this->redirectToRoute('/courses');
+
+
+        }
 
         return $this->render('register/index.html.twig',[
             'nomPage' => "Connexion",

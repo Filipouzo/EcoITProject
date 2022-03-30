@@ -1,17 +1,40 @@
+
+
+{#        {% if app.user %}#}
+{#                    {% if app.user.roles == ['ROLE_TEACHER'] %}#}
+{#                    {% if app.user.roles == ['ROLE_STUDENT'] %}#}
+
 <header class="navbar-header p-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
         <div class="col-4 pt-1">
-            <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_connexion') }}"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Créer un compte apprenant</span></span></a>
+            {% if app.user == false %}
+                <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_enregistrement_apprenant') }}">Créer un compte apprenant</a>
+            {%  endif %}
         </div>
         <div class="col-4 pt-1">
-            <a class="navbar-brand col-4" href="/">
-                <span class="logo"> <img src="#" width="40px"></span>
+
+
+            <a href="{{ path('app_home') }}" class="d-flex align-items-center col-md-auto mb-2 mb-md-0 text-decoration-none">
+                <img src="assets/pictures/EcoIT.png" width="60" height="50" alt="logo">
             </a>
+
+
+
+{#            <a class="navbar-brand col-4" href="{{ path('app_home') }}">#}
+{#                <img src="assets/pictures/EcoIT.png" width="40px">#}
+{#            </a>#}
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
-            <!-- TODO: si authentifié : pseudo ou prenom ou administrateur + bouton se déconnecter-->
-            <a class="btn btn-sm btn-outline-secondary" href="#"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Se déconnecter</span></span></a>
-            <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_login') }}"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">Se connecter</span></span></a>
+            {% if app.user %}
+
+                {% if app.user.roles == ['ROLE_STUDENT'] %}
+                    <strong>Bonjour {{ app.user.nickname }}</strong>#}
+                {%  endif %}
+
+                <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Se déconnecter</a>
+            {%  else %}
+                <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_login') }}">Se connecter</a>
+            {%  endif %}
         </div>
     </div>
 </header>
