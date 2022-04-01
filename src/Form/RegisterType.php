@@ -19,7 +19,7 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('nickname', TextType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Votre pseudo',
                 'constraints' => new Length(min:2 , max: 30),
                 'attr' => [
@@ -28,6 +28,7 @@ class RegisterType extends AbstractType
             ])
 
             ->add('email', EmailType::class, [
+                'required' => true,
                 'label' => 'Votre Email',
                 'constraints' => new Length(min:2 , max: 30),
                 'attr' => [

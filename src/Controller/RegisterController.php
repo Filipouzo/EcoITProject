@@ -41,7 +41,7 @@ class RegisterController extends AbstractController
                 'Vous êtes maintenant enregistré en tant qu\'apprenant !'
             );
 
-//            return $this->redirectToRoute('/courses');
+            return $this->redirectToRoute('app_account');
 
 
         }

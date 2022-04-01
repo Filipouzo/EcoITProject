@@ -2,23 +2,33 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Site de formation à l'éco-conception web">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Site de formation à l'éco-conception numérique">
     <title>{% block title %}EcoIT{% endblock %}</title>
     {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
 </head>
 
 
-<body class="container">
+<body>
 
-    <div class="{#fixed-top#}">
-        {% include 'base/header.html.twig'%}
-        {% include 'base/nav.html.twig'%}
+
+    <div class="fixed-top">
+        <div class="header-custom">
+            {% include 'base/header.html.twig'%}
+        </div>
     </div>
 
-    <div class="p-5 mt-5">
+
+
+    <div class="container main-custom">
         {% block body %}{% endblock %}
     </div>
+    <div class="fixed-bottom">
+        <div class="footer-custom">
+            {% include 'base/footer.html.twig'%}
+        </div>
+    </div>
+
 
     {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 </body>

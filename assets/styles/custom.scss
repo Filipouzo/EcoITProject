@@ -1,0 +1,23 @@
+.header-custom{
+  background-color: #e0ecd1;
+}
+
+.footer-custom{
+  background-color: #e0ecd1;
+  text-align: center;
+}
+
+
+.main-custom{
+padding-top: 150px;
+}
+
+
+//A editer avec les couleurs du color-theme
+$body-bg: #e9eae7;
+$body-color: #111;
+$theme-colors: (
+        "primary": #0EA47A,
+        "danger": #ff4136,
+        "custom-color": #900
+)
