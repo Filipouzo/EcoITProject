@@ -35,6 +35,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $lastName;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $profilepicture;
+
+    #[ORM\Column(type: 'text')]
+    private $description;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $isAccepted;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +145,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getProfilepicture(): ?string
+    {
+        return $this->profilepicture;
+    }
+
+    public function setProfilepicture(?string $profilepicture): self
+    {
+        $this->profilepicture = $profilepicture;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIsAccepted(): ?bool
+    {
+        return $this->isAccepted;
+    }
+
+    public function setIsAccepted(?bool $isAccepted): self
+    {
+        $this->isAccepted = $isAccepted;
 
         return $this;
     }
