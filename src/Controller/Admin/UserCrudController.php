@@ -3,12 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 
@@ -19,25 +19,34 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
+
+    // Ajout d'un filtre qui va permettre de trier par CANDIDATE ou INSTRUCTOR
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('roles');
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
 
-            ImageField::new('profilepicture')
+            ImageField::new('profilepicture', 'Photo')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
-            TextField::new('firstName'),
-            TextField::new('lastName'),
-            TextField::new('email'),
-            TextareaField::new('description'),
-            BooleanField::new('isAccepted'),
-            ArrayField::new('roles', 'Roles'),
-            TextField::new('password'),
-
-
-//            ::new('roles'),
+            TextField::new('firstName', 'Prénom'),
+            TextField::new('lastName', 'Nom'),
+            TextField::new('email', 'Email'),
+            TextareaField::new('description', 'Description'),
+            BooleanField::new('isAccepted', 'candidature traitée'),
+            ChoiceField::new('roles', 'Rôle')
+                ->setChoices([
+                'Instructeur' => 'ROLE_INSTRUCTOR',
+                'Candidat' => 'ROLE_CANDIDATE'])
+                ->allowMultipleChoices()
+                ->renderExpanded()
         ];
     }
 

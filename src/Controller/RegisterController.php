@@ -33,6 +33,12 @@ class RegisterController extends AbstractController
             $user->setPassword($password);
 
             $em = $this->doctrine->getManager();
+
+
+
+            // défini le role de User même si c'est déjà le cas
+            $user->setRoles(['ROLE_USER']);
+
             $em->persist($user);
             $em->flush();
 
