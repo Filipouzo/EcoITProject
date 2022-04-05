@@ -6,9 +6,14 @@
     <H1>Mon compte</H1>
     <br/>
     Bienvenue dans votre compte
-    {% if app.user.roles == ['ROLE_USER'] %}
+    {% if is_granted('ROLE_CANDIDATE') %}
+        <strong>{{app.user.firstName}}</strong>
+    {% elseif is_granted('ROLE_USER') %}
         <strong>{{app.user.nickname}}</strong>
-    {%  endif %}<br/> Si vous le souhaitez, vous pourrez ici, modifier vos informations personnelles.
+    {%  endif %}
+
+
+    <br/> Si vous le souhaitez, vous pourrez ici, modifier vos informations personnelles.
     <hr>
     - Modifier mon Pseudo<br/>
     - Modifier mon mot de passe<br/>

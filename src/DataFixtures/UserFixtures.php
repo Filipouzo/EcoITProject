@@ -41,7 +41,7 @@ class UserFixtures extends Fixture
         $manager->persist($instructor);
 
         $candidate = new User();
-        $candidate  ->setEmail("candidate@exemple.com")
+        $candidate  ->setEmail("candidat@exemple.com")
             ->setPassword($this->passwordEncoder->hashPassword($candidate, 'candidat'))
                     ->setRoles(['ROLE_CANDIDATE'])
                     ->setDescription("depuis tout petit, je rêve d'être instructeur !")

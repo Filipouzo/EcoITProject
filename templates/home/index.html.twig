@@ -31,6 +31,12 @@
                 <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_enregistrement_apprenant') }}">Créer un compte apprenant</a>
             {%  endif %}
 
+            {% if app.user == false %}
+                <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_candidate_register') }}">Postuler comme formateur</a>
+            {%  endif %}
+
+
+
         </div>
 
 
