@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegisterType;
+use App\Form\CandidateRegisrterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,17 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-class RegisterController extends AbstractController
+class CandidateRegisterController extends AbstractController
 {
-
     public function __construct(private ManagerRegistry $doctrine) {}
 
-    #[Route(path: '/register', name: 'app_enregistrement_apprenant')]
+    #[Route('/candidate-register', name: 'app_candidate_register')]
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher ): Response
     {
+
         $user = new User();
-        $form = $this->createForm(RegisterType::class, $user);
+        $form = $this->createForm(CandidateRegisrterType::class, $user);
 
         $form->handleRequest($request);
 
@@ -34,27 +33,31 @@ class RegisterController extends AbstractController
 
             $em = $this->doctrine->getManager();
 
-
-
-            // défini le role d'apprenant'
-            $user->setRoles(['ROLE_STUDENT']);
+            // défini le role de CANDIDATE
+            $user->setRoles(['ROLE_CANDIDATE']);
 
             $em->persist($user);
             $em->flush();
 
             $this->addFlash(
                 'notice',
-                'Vous êtes maintenant enregistré en tant qu\'apprenant !'
+                'Votre candidature a bien été enregistrée !'
             );
 
             return $this->redirectToRoute('account');
-
-
         }
 
-        return $this->render('register/index.html.twig',[
-            'nomPage' => "Connexion",
-            'form'=> $form->createView()
+
+
+
+
+
+
+
+
+        return $this->render('candidate_register/index.html.twig', [
+            'nomPage' => "Enregistrement candidature",
+            'formCandidate'=> $form->createView()
         ]);
     }
 }

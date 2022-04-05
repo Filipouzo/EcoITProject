@@ -12,10 +12,8 @@
 <body>
 
 
-    <div class="fixed-top">
-        <div class="header-custom">
-            {% include 'base/header.html.twig'%}
-        </div>
+    <div class="header-custom">
+    {% include 'base/header.html.twig'%}
     </div>
 
 
@@ -31,6 +29,8 @@
 
 
     {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+
+
 </body>
 
 </html>
