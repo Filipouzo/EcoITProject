@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -11,13 +10,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Flex\Response;
 
 
 class UserCrudController extends AbstractCrudController
 {
-
-
     public static function getEntityFqcn(): string
     {
         return User::class;
@@ -28,7 +24,7 @@ class UserCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('roles', null, ['label' => 'Rôles']);
+            ->add('roles');
     }
 
     public function configureFields(string $pageName): iterable
@@ -48,10 +44,7 @@ class UserCrudController extends AbstractCrudController
             ChoiceField::new('roles', 'Rôle')
                 ->setChoices([
                 'Instructeur' => 'ROLE_INSTRUCTOR',
-                'Candidat' => 'ROLE_CANDIDATE',
-                'Apprenant'=> 'ROLE_STUDENT',
-                'Administrateur'=>'ROLE_ADMIN'
-                ])
+                'Candidat' => 'ROLE_CANDIDATE'])
                 ->allowMultipleChoices()
                 ->renderExpanded()
         ];

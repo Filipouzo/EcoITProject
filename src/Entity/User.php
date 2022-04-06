@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -45,18 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $isAccepted;
-
-    #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'isCompletedBy')]
-    private $HasEndedCourse;
-
-    #[ORM\OneToMany(mappedBy: 'IsCreatedBy', targetEntity: Course::class, orphanRemoval: true)]
-    private $hasCreatedCourse;
-
-    public function __construct()
-    {
-        $this->HasEndedCourse = new ArrayCollection();
-        $this->hasCreatedCourse = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -195,63 +181,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsAccepted(?bool $isAccepted): self
     {
         $this->isAccepted = $isAccepted;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Course>
-     */
-    public function getHasEndedCourse(): Collection
-    {
-        return $this->HasEndedCourse;
-    }
-
-    public function addHasEndedCourse(Course $hasEndedCourse): self
-    {
-        if (!$this->HasEndedCourse->contains($hasEndedCourse)) {
-            $this->HasEndedCourse[] = $hasEndedCourse;
-            $hasEndedCourse->addIsCompletedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHasEndedCourse(Course $hasEndedCourse): self
-    {
-        if ($this->HasEndedCourse->removeElement($hasEndedCourse)) {
-            $hasEndedCourse->removeIsCompletedBy($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Course>
-     */
-    public function getHasCreatedCourse(): Collection
-    {
-        return $this->hasCreatedCourse;
-    }
-
-    public function addHasCreatedCourse(Course $hasCreatedCourse): self
-    {
-        if (!$this->hasCreatedCourse->contains($hasCreatedCourse)) {
-            $this->hasCreatedCourse[] = $hasCreatedCourse;
-            $hasCreatedCourse->setIsCreatedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHasCreatedCourse(Course $hasCreatedCourse): self
-    {
-        if ($this->hasCreatedCourse->removeElement($hasCreatedCourse)) {
-            // set the owning side to null (unless already changed)
-            if ($hasCreatedCourse->getIsCreatedBy() === $this) {
-                $hasCreatedCourse->setIsCreatedBy(null);
-            }
-        }
 
         return $this;
     }

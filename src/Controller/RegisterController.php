@@ -36,8 +36,8 @@ class RegisterController extends AbstractController
 
 
 
-            // défini le role d'apprenant'
-            $user->setRoles(['ROLE_STUDENT']);
+            // défini le role de User même si c'est déjà le cas
+            $user->setRoles(['ROLE_USER']);
 
             $em->persist($user);
             $em->flush();
@@ -47,7 +47,7 @@ class RegisterController extends AbstractController
                 'Vous êtes maintenant enregistré en tant qu\'apprenant !'
             );
 
-            return $this->redirectToRoute('account');
+            return $this->redirectToRoute('app_account');
 
 
         }
