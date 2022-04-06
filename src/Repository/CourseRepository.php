@@ -45,22 +45,23 @@ class CourseRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Course[] Returns an array of Course objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Course[] Returns an array of Course objects
+      */
+
+    public function findLastCourses()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+        //    ->andWhere('c.exampleField = :val')
+        //    ->setParameter('val', $value)
+        // remplacer ascendant ASC par descendent ??? à vérifier
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Course
