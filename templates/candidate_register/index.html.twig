@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ nomPage }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h3>Merci de remplir ces quelques informations pour créer votre candidature</h3>
+        <h2>Un administrateur vous répondra dans les plus brefs délais </h2>
+        {{ form(formCandidate) }}
+
+    </div>
+{% endblock %}
