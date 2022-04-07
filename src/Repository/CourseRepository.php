@@ -54,7 +54,7 @@ class CourseRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
         //    ->andWhere('c.exampleField = :val')
         //    ->setParameter('val', $value)
-        // remplacer ascendant ASC par descendent ??? à vérifier
+        // remplacer ascendant ASC par descendent DESC ??? à vérifier
             ->orderBy('c.id', 'DESC')
             ->setMaxResults(3)
             ->getQuery()

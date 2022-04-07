@@ -18,9 +18,9 @@ class CourseFixtures extends Fixture
         ];
             $descriptionCourse = [
                 "Mais qu'est ce que l'éco-conception en fait ?",
-                "l’éco-conception et les piliers de l’économie circulaire",
+                "Les piliers de l’économie circulaire",
                 "Le guide des bonnes pratiques",
-                "les connaissances fondamentales sur le sujet"
+                "Les connaissances fondamentales sur le sujet"
             ];
 
         $imageCourse = [
