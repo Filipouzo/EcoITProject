@@ -17,7 +17,7 @@
                                                         <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy}}</div>
 
                             <p class="card-text mb-auto">{{ course.description | raw }}</p>
-                            <a href="/detail" class="stretched-link">Débuter la formation</a>
+                            <a href="{{ path('app_course_show',{'id':course.id}) }}"  class="stretched-link">Débuter la formation</a>
                             {#                             stretched-link permet d'englober toute la div de l'article et pas seulement le bouton#}
                         </div>
                         <div class="col-auto d-none d-sm-block">

@@ -13,17 +13,8 @@ class CoursesController extends AbstractController
 
 
     #[Route(path :'/courses', name: 'courses')]
-
-//    public function index(): Response
-//    {
-//        return $this->render('courses/index.html.twig',[
-//            'nomPage' => "Liste des formations"
-//        ]);
-//    }
-
-
-
-    public function index(ManagerRegistry $doctrine) {
+    public function index(ManagerRegistry $doctrine): Response
+    {
         $repository = $doctrine->getRepository(persistentObject: Course::class);
         $courses = $repository->findBy([]);
         return $this->render('courses/index.html.twig',[
@@ -32,9 +23,14 @@ class CoursesController extends AbstractController
         ]);
     }
 
-    #[Route(path :'/courses/12', name: 'course_show')]
-    public function show(){
-        return $this->render ('courses/show.html.twig');
+    #[Route(path :'/courses/{id}', name: 'app_course_show')]
+    public function show($id, ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(persistentObject: Course::class);
+        $course = $repository->find($id);
+        return $this->render ('courses/show.html.twig',[
+            'course' => $course,
+            'nomPage' => "Formation"
+        ]);
     }
-
 }

@@ -4,18 +4,23 @@
 
 {% block body %}
 
-    <h1>Ici le détails d'une formation</h1>
+    <h3>Voci le détail de votre formation</h3>
 
-    <section class="courses">
+    <section class="course">
 
-            <article>
-                <h2>titre du cours</h2>
-                <div class="metedata">ecit le 10/05/2018</div>
-                <div class="content"><img src="https://plachold.it/350x150" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae esse ipsam molestias provident,
-                        repellat vitae?</p>
+        <div class="col-sm-12 col-lg-7">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    {#                            <strong class="d-inline-block mb-2 text-primary">Le </strong>#}
+                    <h4 class="mb-0 text-primary">{{ course.name }}</h4>
+                    <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy}}</div>
+
+                    <p class="card-text mb-auto">{{ course.description | raw }}</p></div>
+                <div class="col-auto d-none d-sm-block">
+                    <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">
                 </div>
-            </article>
+            </div>
+        </div>
 
     </section>
 
