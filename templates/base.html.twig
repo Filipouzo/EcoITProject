@@ -8,29 +8,20 @@
     {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
 </head>
 
-
 <body>
-
-
-    <div class="header-custom">
+    <div>
     {% include 'base/header.html.twig'%}
     </div>
-
-
 
     <div class="container main-custom">
         {% block body %}{% endblock %}
     </div>
-    <div class="fixed-bottom">
-        <div class="footer-custom">
+
+    <div>
             {% include 'base/footer.html.twig'%}
-        </div>
     </div>
 
-
     {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-
-
 </body>
 
 </html>

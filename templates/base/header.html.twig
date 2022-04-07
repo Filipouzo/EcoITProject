@@ -1,50 +1,5 @@
-{#<header class="">#}
 
-
-{#    <div class="row flex-nowrap align-items-center m-0">#}
-{#        <div class="col-4">#}
-{#            <a href="{{ path('app_home') }}" class="d-flex align-items-center col-md-auto m-0 text-decoration-none">#}
-{#                <img src="{{ asset('/pictures/EcoIT.png') }}" width="70px" alt="logo eco-it"/>#}
-{#                <div class="m-2 text-primary">#}
-{#                    Formation à léco-conception numérique#}
-{#                </div>#}
-{#            </a>#}
-{#        </div>#}
-
-
-{#        <div class="col-4">#}
-{#            <nav class="nav d-flex justify-content-start">#}
-{#                <a class="btn btn-sm btn-outline-primary m-2" href="{{ path('courses') }}">Formations</a>#}
-
-{#                {% if is_granted('ROLE_INSTRUCTOR')%}#}
-{#                    <a class="btn btn-sm btn-outline-primary m-2" href="{{ path('admin') }}">Gérer mes formations</a>#}
-{#                {% elseif is_granted('ROLE_ADMIN') %}#}
-{#                    <a class="btn btn-sm btn-outline-primary m-2" href="{{ path('admin') }}">Administration</a>#}
-{#                {%  endif %}#}
-
-{#            </nav>#}
-{#        </div>#}
-
-
-{#        <div class="col-4">#}
-{#            <nav class="nav d-flex justify-content-end">#}
-{#                {% if app.user %}#}
-{#                    <a class="btn btn-sm btn-outline-secondary m-2" href="{{ path('account') }}"><strong>{% if app.user.firstName %} {{app.user.firstName}} {% else %} {{ app.user.nickname }} {% endif %}</strong></a>#}
-{#                    <a class="btn btn-sm btn-outline-secondary m-2" href="{{ path('app_logout') }}">Se déconnecter</a>#}
-{#                {%  else %}#}
-{#                    <a class="btn btn-sm btn-outline-secondary m-2" href="{{ path('app_enregistrement_apprenant') }}">Créer un compte apprenant</a>#}
-{#                    <a class="btn btn-sm btn-outline-secondary m-2" href="{{ path('app_candidate_register') }}">Postuler comme formateur</a>#}
-{#                    <a class="btn btn-sm btn-outline-secondary m-2" href="{{ path('app_login') }}">Se connecter</a>#}
-{#                {%  endif %}#}
-{#            </nav>#}
-{#        </div>#}
-{#    </div>#}
-
-{#</header>#}
-
-
-
-<nav class="navbar fixed-top navbar-expand-sm navbar-light header-custom">
+<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light header-custom p-0">
     <div class="container container-fluid">
             <a href="{{ path('app_home') }}" class="navbar-brand mb-0 text-primary">
                <img class="d-inline-block align-middle" src="{{ asset('/pictures/EcoIT.png') }}" width="60" alt="logo eco-it"/>

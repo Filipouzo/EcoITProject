@@ -1,11 +1,11 @@
-.header-custom{
-  background-color: #e0ecd1;
-}
-
-.footer-custom{
-  background-color: #e0ecd1;
-  text-align: center;
-}
+//.header-custom{
+//  background-color: #e0ecd1;
+//}
+//
+//.footer-custom{
+//  background-color: #e0ecd1;
+//  text-align: center;
+//}
 
 
 .main-custom{
@@ -14,12 +14,13 @@ padding-top: 150px;
 
 
 //A editer avec les couleurs du color-theme
-$body-bg: #e9eae7;
+$body-bg: #ffffff;
 $body-color: #111;
 $theme-colors: (
         "primary": #0EA47A,
         "secondary":#c0ccdc,
         "danger": #ff4136,
         "custom-color": #900,
-        "info": #17a2b8
+        "info": #17a2b8,
+        "light":#e0ecd1
 )
