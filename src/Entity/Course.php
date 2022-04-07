@@ -27,14 +27,15 @@ class Course
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $slug;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'HasEndedCourse')]
+    #[ORM\JoinColumn(nullable: true)] // A supprimer
     private $isCompletedBy;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'hasCreatedCourse')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)] // A remettre à false
     private $IsCreatedBy;
 
     #[ORM\OneToMany(mappedBy: 'course', targetEntity: Section::class, orphanRemoval: true)]

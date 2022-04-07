@@ -36,13 +36,14 @@ class UserCrudController extends AbstractCrudController
         return [
 
             ImageField::new('profilepicture', 'Photo')
-                ->setBasePath('uploads/')
-                ->setUploadDir('public/uploads/')
+                ->setBasePath('uploads/picture')
+                ->setUploadDir('public/uploads/picture')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             TextField::new('firstName', 'Prénom'),
             TextField::new('lastName', 'Nom'),
             TextField::new('email', 'Email'),
+            TextField::new('password','mot de passe'),
             TextareaField::new('description', 'Description'),
             BooleanField::new('isAccepted', 'candidature traitée'),
             ChoiceField::new('roles', 'Rôle')

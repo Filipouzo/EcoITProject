@@ -15,4 +15,9 @@ class CoursesController extends AbstractController
             'nomPage' => "Liste des formations"
         ]);
     }
+
+    #[Route(path :'/courses/12', name: 'course_show')]
+    public function show(){
+        return $this->render ('courses/show.html.twig');
+    }
 }
