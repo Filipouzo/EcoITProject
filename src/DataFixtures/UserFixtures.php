@@ -6,14 +6,18 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Faker;
 
 class UserFixtures extends Fixture
 {
+
 
     public function __construct( private UserPasswordHasherInterface $passwordEncoder){}
 
     public function load(ObjectManager $manager): void
     {
+        $faker = Faker\Factory::create('fr_FR');
+
         $admin = new User();
         $admin      ->setEmail("admin@exemple.com")
                     ->setPassword($this->passwordEncoder->hashPassword($admin, 'admin'))
@@ -26,10 +30,11 @@ class UserFixtures extends Fixture
                     ->setPassword($this->passwordEncoder->hashPassword($instructor, 'instructeur'))
                     ->setRoles(['ROLE_INSTRUCTOR'])
                     ->setDescription("J'en avais rêvé, je suis maintenant instructeur !")
-//                  ->setProfilepicture("4899f85413a740cda66a8ae328747125d960fb38.jpg")
+                  ->setProfilepicture($faker->imageUrl())
                     ->setIsAccepted(true)
                     ->setFirstName("Instructeur")
-                    ->setLastName("Doe");
+                    ->setLastName("Doe")
+        ;
         $manager->persist($instructor);
 
         $user = new User();
@@ -44,10 +49,11 @@ class UserFixtures extends Fixture
                     ->setPassword($this->passwordEncoder->hashPassword($candidate, 'candidat'))
                     ->setRoles(['ROLE_CANDIDATE'])
                     ->setDescription("depuis tout petit, je rêve d'être instructeur !")
-//                  ->setProfilepicture("4899f85413a740cda66a8ae328747125d960fb38.jpg")
+                    ->setProfilepicture($faker->imageUrl())
                     ->setIsAccepted(false)
                     ->setFirstName("Candidat")
                     ->setLastName("Musk");
+
         $manager->persist($candidate);
 
         $manager->flush();

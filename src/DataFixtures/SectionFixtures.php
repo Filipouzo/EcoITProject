@@ -1,17 +1,33 @@
 <?php
+//
+//namespace App\DataFixtures;
+//
+//use App\Entity\Section;
+//use Doctrine\Bundle\FixturesBundle\Fixture;
+//use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+//use Doctrine\Persistence\ObjectManager;
+//use Faker;
+//
+//class SectionFixtures extends Fixture implements DependentFixtureInterface
+//{
+//    public function getDependencies():array
+//    {
+//        return [
+//            CourseFixtures::class,
+//            LessonFixtures::class
+//        ];
+//    }
+//
+//    public function load(ObjectManager $manager): void
+//    {
+//        $faker = Faker\Factory::create('fr_FR);
 
-namespace App\DataFixtures;
-
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-
-class SectionFixtures extends Fixture
-{
-    public function load(ObjectManager $manager): void
-    {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
-    }
-}
+//        for ($i=0; $i<=3; $i++) {
+//            $section = new Section();
+//            $section->setTitle($faker->sentence());
+//            $manager->persist($section);
+//        }
+//
+//        $manager->flush();
+//    }
+//}

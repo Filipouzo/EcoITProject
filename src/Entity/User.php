@@ -52,10 +52,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'IsCreatedBy', targetEntity: Course::class, orphanRemoval: true)]
     private $hasCreatedCourse;
 
+    #[ORM\ManyToMany(targetEntity: Lesson::class, mappedBy: 'isCheckedBy')]
+    private $CheckedLessons;
+
     public function __construct()
     {
         $this->HasEndedCourse = new ArrayCollection();
         $this->hasCreatedCourse = new ArrayCollection();
+        $this->CheckedLessons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,6 +255,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($hasCreatedCourse->getIsCreatedBy() === $this) {
                 $hasCreatedCourse->setIsCreatedBy(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lesson>
+     */
+    public function getCheckedLessons(): Collection
+    {
+        return $this->CheckedLessons;
+    }
+
+    public function addCheckedLesson(Lesson $checkedLesson): self
+    {
+        if (!$this->CheckedLessons->contains($checkedLesson)) {
+            $this->CheckedLessons[] = $checkedLesson;
+            $checkedLesson->addIsCheckedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCheckedLesson(Lesson $checkedLesson): self
+    {
+        if ($this->CheckedLessons->removeElement($checkedLesson)) {
+            $checkedLesson->removeIsCheckedBy($this);
         }
 
         return $this;
