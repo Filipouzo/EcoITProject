@@ -14,11 +14,14 @@
                         <div class="col p-4 d-flex flex-column position-static">
                             {#                            <strong class="d-inline-block mb-2 text-primary">Le </strong>#}
                             <h4 class="mb-0 text-primary">{{ course.name }}</h4>
-                                                        <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy}}</div>
+                                                        <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.firstName}} {{ course.IsCreatedBy.lastName}}</div>
 
                             <p class="card-text mb-auto">{{ course.description | raw }}</p>
-                            <a href="{{ path('app_course_show',{'id':course.id}) }}"  class="stretched-link">Débuter la formation</a>
-                            {#                             stretched-link permet d'englober toute la div de l'article et pas seulement le bouton#}
+                            {% if app.user %}
+                                <a href="{{ path('app_course_show',{'id':course.id}) }}" class="stretched-link">Débuter la formation</a>
+                            {%  else %}
+                                <a href="{{ path('app_enregistrement_apprenant') }}" class="stretched-link">Se connecter pour accéder au cours<</a>
+                            {%  endif %}
                         </div>
                         <div class="col-auto d-none d-sm-block">
                             <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">

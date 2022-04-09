@@ -35,8 +35,13 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary btn-sm mt-2" type="submit">
+    <button class="btn btn-lg btn-primary text-white btn-sm mt-2" type="submit">
         Se connecter
     </button>
+
+
+    <h4 class="mt-5">Vous n'avez pas encore de compte</h4>
+    <a href="{{ path('app_enregistrement_apprenant') }}" class="btn btn-lg btn-primary text-white btn-sm " role="button" aria-pressed="true">Créer un compte</a>
+
 </form>
 {% endblock %}

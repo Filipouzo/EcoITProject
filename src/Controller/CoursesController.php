@@ -13,7 +13,7 @@ class CoursesController extends AbstractController
 {
     #[Route(path :'/courses', name: 'courses')]
     public function index(CourseRepository $repo,ManagerRegistry $doctrine): Response { //injection de dépendances du Course repository
-            $courses = $repo->findBy([]);
+            $courses = $repo->findDESC();
         return $this->render('courses/index.html.twig',[
             'courses' => $courses,
             'nomPage' => "Liste des formations"

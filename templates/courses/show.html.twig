@@ -1,27 +1,187 @@
 {% extends 'base.html.twig' %}
 
-{#{% block title %}{{ nomPage }}{% endblock %}#}
+{% block title %}{{ nomPage }}{% endblock %}
 
 {% block body %}
+    {% if app.user %}
 
-    <h3>Voci le détail de votre formation</h3>
 
-    <section class="course">
+        <h1 class="text-center text-primary">{{ course.name }}</h1>
+        <div class="row">
 
-        <div class="col-sm-12 col-lg-7">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    {#                            <strong class="d-inline-block mb-2 text-primary">Le </strong>#}
+            <div class="col-4">
+                <Aside>
                     <h4 class="mb-0 text-primary">{{ course.name }}</h4>
-                    <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy}}</div>
-
-                    <p class="card-text mb-auto">{{ course.description | raw }}</p></div>
-                <div class="col-auto d-none d-sm-block">
+                    <p class="card-text mb-auto">{{ course.description | raw }}</p>
+                    <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.firstName}} {{ course.IsCreatedBy.lastName}}</div>
                     <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">
-                </div>
+
+{#                        {% for section in course.sections %}#}
+{#                        {% endfor %}#}
+
+
+
+                </aside>
+
+            </div>
+
+            <div class="col-8">
             </div>
         </div>
 
-    </section>
-
+    {%  else %}
+        <a href="{{ path('app_enregistrement_apprenant') }}" class="stretched-link">S'enregistrer pour débuter la formation</a>
+    {%  endif %}
 {% endblock %}
+
+
+{#        <h1 class="title-center">{{ course.name }}</h1>#}
+
+{#        <div class="row">#}
+{#            <div class="col-4">#}
+{#                <ul>#}
+{#                    <li><h2>{{ course.name }}</h2></li>#}
+{#                    <hr>#}
+{#                    {% for section in sections %}#}
+{#                        <li class="list-section"><h3>{{ section.title }}</h3></li>#}
+{#                        {% for lesson in lessons %}#}
+{#                            {% if lesson.section.id is same as section.id %}#}
+{#                                <li class="list-lesson">#}
+{#                                    <a id="{{ lesson.id }}" href="{{ path('lesson_check', { 'slug': formation.slug, 'id' : lesson.id }) }}" class="js-check">#}
+{#                                        {% if app.user and lesson.isCheckedByUser(app.user) %}#}
+{#                                            <img class="check{{ lesson.id }} icon-lesson" src="{{ asset('assets/images/check.png') }}" alt="check">#}
+{#                                        {% else %}#}
+{#                                            <img class="check{{ lesson.id }} icon-lesson" src="{{ asset('assets/images/not-check.png') }}" alt="not-check">#}
+{#                                        {% endif %}#}
+{#                                    </a>#}
+{#                                    <a class="watch" href="{{ path('lesson_watch', { 'slug': formation.slug, 'id' : lesson.id }) }}">#}
+{#                                        {{ lesson.title }}#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#            <div class="col-1 separation">#}
+{#            </div>#}
+{#            <div class="col-7">#}
+{#                <p class="title"></p>#}
+{#                <div class="video"></div>#}
+{#                <p class="explanation"></p>#}
+{#            </div>#}
+{#        </div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% block body %}#}
+{#    <div class="container-fluid g-0 course__one__container" id"courseOneContainer">#}
+{#    <section class="container mb-4">#}
+{#        <div class="row px-5">#}
+{#            <div class="col-12">#}
+{#                <h1 class="d-flex justify-content-center align-items-center fw-bold h2 mb-4 course__one__container__title">#}
+{#                    <span class="badge bg-danger me-4">Cours</span>#}
+{#                    {{ course.name }}#}
+{#                </h1>#}
+{#            </div>#}
+{#            <div class="col-12 course__one__container__description">#}
+{#                <h4 class="text-center">Voici ce que nous allons apprendre dans ce cours :</h4>#}
+{#                <p class="text-center">#}
+{#                    {{ course.description }}#}
+{#                </p>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{#    <hr>#}
+{#    <div class="row px-5 my-5">#}
+{#        <div class="col-12 text-center">#}
+{#            <img src="{{ course.image|getPathImage }}" alt="img-fluid" width="200">#}
+{#        </div>#}
+{#    </div>#}
+{#    {% if isEnrolled %}#}
+{#        <section class="container">#}
+{#            <div class="row px-5">#}
+{#                <div class="col-12">#}
+{#                    {% if sections %}#}
+{#                        {% include 'components/course.one.loop.html.twig' %}#}
+{#                    {% else %}#}
+{#                        <div class="alert alert-warning">#}
+{#                            <h5 class="text-center">#}
+{#                                Aucune section n'a été créée pour ce cours.#}
+{#                            </h5>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{#    {% else %}#}
+{#        <section class="container">#}
+{#            <div class="row px-5">#}
+{#                <div class="col-12">#}
+{#                    <div class="alert alert-warning">#}
+{#                        <h5 class="text-center">#}
+{#                            Vous devez être inscrit pour voir les sections de ce cours.#}
+{#                        </h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{#        <section class="container mb-4">#}
+{#            <div class="row px-5">#}
+{#                <div class="col-12 mb-4 text-center">#}
+{#                    <!-- User Subscriber Form -->#}
+{#                    {{ form_start(user_subscriber_course_form, {'attr': {#}
+{#                        'id': 'userSubscriberCourseForm',#}
+{#                        'action': path('app_course_show_slug', {'slug': course.slug}),#}
+{#                    }})#}
+{#                    }}#}
+{#                    {{ form_widget(user_subscriber_course_form.course_id, {#}
+{#                        'value': course.id ,#}
+{#                        'id': 'userSubscriberCourseFormCourseId',#}
+{#                    })#}
+{#                    }}#}
+{#                    {{ form_widget(user_subscriber_course_form.user_id, {#}
+{#                        'value': app.user.id,#}
+{#                        'id': 'userSubscriberCourseFormUserId',#}
+{#                    })#}
+{#                    }}#}
+{#                    <button#}
+{#                            type="submit"#}
+{#                            class="btn btn-primary btn-block btn-lg mt-4 text-white"#}
+{#                    >#}
+{#                        Je m'inscris#}
+{#                    </button>#}
+{#                    {{ form_end(user_subscriber_course_form) }}#}
+{#                </div>#}
+{#                <div class="col-12" id="userSubscriberCourseFormMessage">#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{#    {% endif %}#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{#{% block javascripts %}#}
+{#    {{ parent() }}#}
+{#    {{ encore_entry_script_tags('userSubscriberCourse') }}#}
+{#{% endblock %}#}

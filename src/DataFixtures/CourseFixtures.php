@@ -57,7 +57,7 @@ class CourseFixtures extends Fixture
                 "Green IT"
             ];
             $descriptionCourse = [
-                "Mais qu'est ce que l'éco-conception en fait ?",
+                "Mais qu'est ce que l'éco-conception ?",
                 "Les piliers de l’économie circulaire",
                 "Le guide des bonnes pratiques",
                 "Les connaissances fondamentales sur le sujet"
