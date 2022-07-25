@@ -13,14 +13,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CourseFixtures extends Fixture
 {
-
     public function __construct( private UserPasswordHasherInterface $passwordEncoder){}
 
         public function load(ObjectManager $manager): void
     {
-
-
-
         $faker = Faker\Factory::create('fr_FR');
 
         for ($h=0; $h<=3; $h++) {
@@ -90,11 +86,11 @@ class CourseFixtures extends Fixture
 
                 for ($k=1; $k<=mt_rand(1,4); $k++) {
                     $lesson = new lesson();
+                    $content = '<p>'.join($faker->paragraphs(),'</p><p>').'</p>';
                     $lesson
                         ->setTitle('Leçon N°'.$k)
-                        ->setContent('dedededededede' )
+                        ->setContent($content)
                         ->setSection($section)
-//                        ->setIsCheckedBy($fakeStudent)
                     ;
                     $manager->persist($lesson);
                 }
@@ -102,6 +98,4 @@ class CourseFixtures extends Fixture
         }
         $manager->flush();
     }
-
-
 }

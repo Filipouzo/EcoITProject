@@ -75,7 +75,7 @@
                             <p class="card-text mb-auto">{{ course.description }}</p>
 
                             {% if app.user %}
-                            <a href="{{ path('app_course_show',{'id':course.id}) }}" class="stretched-link">Débuter la formation</a>
+                            <a href="{{ path('app_course_show',{'idCourse':course.id}) }}" class="stretched-link">Débuter la formation</a>
                             {%  else %}
                             <a href="{{ path('app_login') }}" class="stretched-link">Se connecter pour accéder au cours</a>
                             {%  endif %}

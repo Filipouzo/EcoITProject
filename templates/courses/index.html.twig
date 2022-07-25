@@ -14,11 +14,11 @@
                         <div class="col p-4 d-flex flex-column position-static">
                             {#                            <strong class="d-inline-block mb-2 text-primary">Le </strong>#}
                             <h4 class="mb-0 text-primary">{{ course.name }}</h4>
-                                                        <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.firstName}} {{ course.IsCreatedBy.lastName}}</div>
+                                                        <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.fullName}}</div>
 
                             <p class="card-text mb-auto">{{ course.description | raw }}</p>
                             {% if app.user %}
-                                <a href="{{ path('app_course_show',{'id':course.id}) }}" class="stretched-link">Débuter la formation</a>
+                                <a href="{{ path('app_course_show',{'idCourse':course.id}) }}" class="stretched-link">Débuter la formation</a>
                             {%  else %}
                                 <a href="{{ path('app_enregistrement_apprenant') }}" class="stretched-link">Se connecter pour accéder au cours<</a>
                             {%  endif %}

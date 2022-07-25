@@ -17,4 +17,4 @@ import './bootstrap';
 import $ from 'jquery';
 
 
-import './js/new';
+import './js/new.js';

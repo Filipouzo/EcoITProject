@@ -10,8 +10,6 @@ use Faker;
 
 class UserFixtures extends Fixture
 {
-
-
     public function __construct( private UserPasswordHasherInterface $passwordEncoder){}
 
     public function load(ObjectManager $manager): void
@@ -33,7 +31,7 @@ class UserFixtures extends Fixture
                   ->setProfilepicture($faker->imageUrl())
                     ->setIsAccepted(true)
                     ->setFirstName("Instructeur")
-                    ->setLastName("Doe")
+                    ->setLastName("DOE")
         ;
         $manager->persist($instructor);
 
@@ -52,7 +50,7 @@ class UserFixtures extends Fixture
                     ->setProfilepicture($faker->imageUrl())
                     ->setIsAccepted(false)
                     ->setFirstName("Candidat")
-                    ->setLastName("Musk");
+                    ->setLastName("MUSK");
 
         $manager->persist($candidate);
 

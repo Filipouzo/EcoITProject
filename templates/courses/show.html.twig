@@ -1,32 +1,155 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ nomPage }}{% endblock %}
+{% block title %}{{ course.name }}{% endblock %}
 
 {% block body %}
     {% if app.user %}
 
 
-        <h1 class="text-center text-primary">{{ course.name }}</h1>
+        <h1 class="text-center text-primary mb-5">{{ course.name }}</h1>
         <div class="row">
+            <Aside class="col-4">
+                <h4 class="mb-0 text-primary">{{ course.name }}</h4>
+                <p class="card-text mb-auto">{{ course.description | raw }}</p>
+                <div class="mb-1 text-muted">Rédigé le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.fullName}}</div>
+                <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">
 
-            <div class="col-4">
-                <Aside>
-                    <h4 class="mb-0 text-primary">{{ course.name }}</h4>
-                    <p class="card-text mb-auto">{{ course.description | raw }}</p>
-                    <div class="mb-1 text-muted">Le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.firstName}} {{ course.IsCreatedBy.lastName}}</div>
-                    <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">
+                {% for section in sections %}
+                    <h3 href="">{{ section.title }}</h3>
+                    {% for lesson in section.lessons %}
+                        <div>
+                            {{ course.id }}
+                            {{ section.id }}
+                            {{ lesson.id }}
+                            <a href="{{ path('app_lesson',{'idLesson' : lesson.id, 'idCourse' : course.id}) }}" class="">{{ lesson.title }}</a>
 
-{#                        {% for section in course.sections %}#}
-{#                        {% endfor %}#}
+                        </div>
+
+
+                        {% if app.user and lesson.isCheckedBy(app.user) %}
+                            <img src="https://www.icone-png.com/png/16/16164.png" alt="check">
+                        {% else %}
+                            <img src="https://www.icone-png.com/png/16/16170.png" alt="not-check">
+                        {% endif %}
+                        <br/>
+                    {% endfor %}
+                {% endfor %}
+
+{#                //{{ loop.index }} permet d'afficher un numéro de chapitre {{ loop.length }} le nombre d'itération#}
+
+            </aside>
+
+
+            <main class="col-8">
+
+                <script> let lessonNbr= {{ listId | length }}</script>
+
+                                {% set idKey= 0 %}
+                                {{ idKey }}
+                {{ idKey==0 ? '' : 'd-none'}}
+                <button type="button" id="previous" class="btn btn-secondary {{ idKey==0 ? 'disabled' : '' }}"> < Leçon précédente</button>
+                <button type="button" id="next" class="btn btn-secondary"> Leçon suivante ></button>
+
+
+{#                <div id="lesson">{{ render(controller('App\\Controller\\LessonController::index',{idLesson: listId[idKey]})) }}#}
+
+
+                {% for idKey in listId|keys %}
+
+                    <div id="{{ idKey }}" class="lesson {{ idKey==0 ? '' : 'd-none'}}"  >
+                            {{ render(controller('App\\Controller\\LessonController::index',{idLesson: listId[idKey]})) }}
+                    </div>
+                {% endfor %}
 
 
 
-                </aside>
 
-            </div>
 
-            <div class="col-8">
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#                {% include 'lesson/index.html.twig' %}#}
+
+
+{#                {% set idKey= 0 %}#}
+{#                <span id="lessonToShow" class="">{{ render(path('app_lesson', {idLesson: listId[idKey]}))}}</span>#}
+{#                {{ idKey }}#}
+
+{#                {% if i in listId|keys %}#}
+
+{#                <span id="idKeys" class="">listId</span>#}
+
+
+
+
+
+{#                {% endif %}#}
+{#                {{ render(controller(#}
+{#                    'App\\Controller\\LessonController::index'#}
+{#                )) }}#}
+
+{#                // récupération de la page Leçon#}
+{#                // avec le paramètre $leçonId#}
+
+
+
+
+
+{#                {% include 'lesson/index.html.twig'%}#}
+
+{#                <a href="" class="btn btn-lg btn-primary text-white btn-sm " role="button" aria-pressed="true">Leçon précédente</a>#}
+{#                <a href="{{ path('app_enregistrement_apprenant') }}" class="btn btn-lg btn-primary text-white btn-sm justify-content-end" role="button" aria-pressed="true">Leçon suivante</a>#}
+
+{#                {{ sections | length }}#}
+{#                {{ lessons | length }}#}
+
+
+
+
+{#                {{ dump(course) }}#}
+{#                {{ dump(sections) }}#}
+
+{#                {{ dump(course.section) }}#}
+
+{#                {{ dump(sections) }}#}
+{#                {{ dump(lessons) }}#}
+
+
+
+
+
+
+
+
+            </main>
         </div>
 
     {%  else %}

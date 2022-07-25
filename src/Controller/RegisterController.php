@@ -50,6 +50,7 @@ class RegisterController extends AbstractController
             return $this->redirectToRoute('account');
 
 
+
         }
 
         return $this->render('register/index.html.twig',[

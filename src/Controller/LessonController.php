@@ -5,14 +5,22 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CourseRepository;
+use App\Repository\LessonRepository;
+
 
 class LessonController extends AbstractController
 {
-    #[Route(path : '/lesson', name: 'app_lesson')]
-    public function index(): Response
+    #[Route(path : '/courses/{idLesson}', name: 'app_lesson')]
+    public function index(CourseRepository $courseRepository,LessonRepository $lessonRepository, $idLesson): Response
     {
+//        $course = $courseRepository->find($idCourse);
+        $lesson = $lessonRepository->find($idLesson);
         return $this->render('lesson/index.html.twig', [
-            'controller_name' => 'LessonController',
+//            'course' => $course,
+            'lesson' => $lesson
         ]);
     }
+
 }
+

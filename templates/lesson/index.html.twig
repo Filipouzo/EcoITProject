@@ -1,11 +1,44 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{ nomPage }}{% endblock %}
+{#{% extends '/courses/show.html.twig' %}#}
 
 {% block body %}
     <div>
 
-        <h1>Ici la description d'une seule formation</h1>
+        {{lesson.section.title}} / {{lesson.title}}
+
+
+
+
     </div>
 {% endblock %}
+
+
+{#<div class="listId {{ 'listId'}}">#}
+{#</div>#}
+
+
+{#        <button type="button" id="previous" class="btn btn-secondary"> < Leçon précédente</button>#}
+
+{#{% for section in sections %}#}
+{#        {% for lesson in section.lessons %}#}
+{#                <div class=" " >#}
+{#                        {{lesson.section.title}} / {{lesson.title}}                        #}
+{#                </div>#}
+{#        {% endfor %}#}
+{#{% endfor %}#}
+
+
+{#                {% set idKey= 0 %}#}
+{#                {% set id= listId[0] %}#}
+{#                {{ dump (id)}}#}
+
+
+{#{{lesson.section.title}} / {{lesson.title}}#}
+
+{#{{ dump(lessons) }}#}
+
+{#{{lesson.section.title}} / {{lesson.title}}#}
+
+
+{#        <button type="button" id="next" class="btn btn-secondary">Leçon suivante ></button>#}
 
