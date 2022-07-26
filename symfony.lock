@@ -56,6 +56,9 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "nat/deploy": {
+        "version": "1.1.14"
+    },
     "sensio/framework-extra-bundle": {
         "version": "6.2",
         "recipe": {
