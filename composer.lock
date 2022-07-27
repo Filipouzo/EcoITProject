@@ -1784,16 +1784,16 @@
         },
         {
             "name": "nat/deploy",
-            "version": "1.1.18",
+            "version": "1.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nathalie-Verdavoir/deploy-heroku.git",
-                "reference": "0da636a923548d43e27397f27f646bbf8e2703de"
+                "reference": "5e3ccea69c034cad9e2aa1908a3715be1d3998cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nathalie-Verdavoir/deploy-heroku/zipball/0da636a923548d43e27397f27f646bbf8e2703de",
-                "reference": "0da636a923548d43e27397f27f646bbf8e2703de",
+                "url": "https://api.github.com/repos/Nathalie-Verdavoir/deploy-heroku/zipball/5e3ccea69c034cad9e2aa1908a3715be1d3998cd",
+                "reference": "5e3ccea69c034cad9e2aa1908a3715be1d3998cd",
                 "shasum": ""
             },
             "require": {
@@ -1829,9 +1829,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Nathalie-Verdavoir/deploy-heroku/issues",
-                "source": "https://github.com/Nathalie-Verdavoir/deploy-heroku/tree/1.1.18"
+                "source": "https://github.com/Nathalie-Verdavoir/deploy-heroku/tree/1.1.23"
             },
-            "time": "2022-07-26T12:38:07+00:00"
+            "time": "2022-07-27T11:27:12+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
