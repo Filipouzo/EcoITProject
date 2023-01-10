@@ -16,7 +16,7 @@ class HomeController extends AbstractController
     public function index(CourseRepository $courseRepository,ManagerRegistry $doctrine) {
         $repository = $doctrine->getRepository(persistentObject: Course::class);
         $courses = $courseRepository->findLastCourses();
-        return $this->render('Home/index.html.twig',[
+        return $this->render('home/index.html.twig',[
             'courses' => $courses,
             'nomPage' => "Accueil"
         ]);
