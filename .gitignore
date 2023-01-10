@@ -18,3 +18,4 @@ composer.lock
 symfony.lock
 composer.lock
 symfony.lock
+migrations/Version20221121122549.php
