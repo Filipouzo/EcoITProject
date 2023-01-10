@@ -48,13 +48,6 @@ class CandidateRegisterController extends AbstractController
         }
 
 
-
-
-
-
-
-
-
         return $this->render('candidate_register/index.html.twig', [
             'nomPage' => "Enregistrement candidature",
             'formCandidate'=> $form->createView()

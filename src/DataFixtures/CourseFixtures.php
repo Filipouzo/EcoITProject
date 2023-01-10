@@ -2,31 +2,43 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
+use App\Entity\User;
+use Faker\Generator;
+use app\entity\Course;
 use App\Entity\Lesson;
 use App\Entity\Section;
-use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use app\entity\Course;
-use Faker;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CourseFixtures extends Fixture
 {
-    public function __construct( private UserPasswordHasherInterface $passwordEncoder){}
+    
+    /**
+     * @var Generator
+     */
+    private Generator $faker;
+
+
+    private UserPasswordHasherInterface $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher)
+    {
+        $this->hasher = $hasher;
+        $this->faker = Factory::create('fr_FR');
+    }
 
         public function load(ObjectManager $manager): void
     {
-        $faker = Faker\Factory::create('fr_FR');
-
         for ($h=0; $h<=3; $h++) {
             $fakeStudent = new User();
             $fakeStudent
-                ->setEmail($faker->email)
-                ->setPassword($this->passwordEncoder->hashPassword($fakeStudent, 'etudiant'))
+                ->setEmail($this->faker->email)
+                ->setPassword($this->hasher->hashPassword($fakeStudent, 'etudiant'))
                 ->setRoles(['ROLE_STUDENT'])
                 ->setDescription("Je suis un étudiant!")
-                ->setNickname($faker->firstName)
+                ->setNickname($this->faker->firstName)
                 ;
         }
 
@@ -34,14 +46,14 @@ class CourseFixtures extends Fixture
         for ($i=0; $i<=3; $i++) {
             $fakeInstructor = new User();
             $fakeInstructor
-                ->setEmail($faker->email)
-                ->setPassword($this->passwordEncoder->hashPassword($fakeInstructor, 'instructeur'))
+                ->setEmail($this->faker->email)
+                ->setPassword($this->hasher->hashPassword($fakeInstructor, 'instructeur'))
                 ->setRoles(['ROLE_INSTRUCTOR'])
                 ->setDescription("Je suis un formateur !")
-                ->setProfilepicture($faker->imageUrl())
+                ->setProfilepicture($this->faker->imageUrl())
                 ->setIsAccepted(True)
-                ->setFirstName($faker->firstName)
-                ->setLastName($faker->lastName);
+                ->setFirstName($this->faker->firstName)
+                ->setLastName($this->faker->lastName);
 
             $manager->persist($fakeInstructor);
 
@@ -70,7 +82,7 @@ class CourseFixtures extends Fixture
             $course ->setName($nameCourse[$i])
                     ->setDescription($descriptionCourse[$i])
                     ->setPicture($imageCourse[$i])
-                    ->setCreationDate($faker->dateTimeBetween('-1 year'))
+                    ->setCreationDate($this->faker->dateTimeBetween('-1 year'))
                     ->setIsCreatedBy($fakeInstructor)
             ;
             $manager->persist($course);
@@ -86,7 +98,7 @@ class CourseFixtures extends Fixture
 
                 for ($k=1; $k<=mt_rand(1,4); $k++) {
                     $lesson = new lesson();
-                    $content = '<p>'.join($faker->paragraphs(),'</p><p>').'</p>';
+                    $content = '<p>'.implode("'</p><p>'",$this->faker->paragraphs()).'</p>';
                     $lesson
                         ->setTitle('Leçon N°'.$k)
                         ->setContent($content)

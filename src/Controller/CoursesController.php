@@ -24,7 +24,8 @@ class CoursesController extends AbstractController
 
     //Affichage de tous les cours par ordre de création
     #[Route(path :'/courses', name: 'courses')]
-    public function index(CourseRepository $repo,ManagerRegistry $doctrine): Response { //injection de dépendances du Course repository
+    public function index(CourseRepository $repo,ManagerRegistry $doctrine): Response { 
+        //injection de dépendances du Course repository
             $courses = $repo->findDESC();
         return $this->render('courses/index.html.twig',[
             'courses' => $courses,

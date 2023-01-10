@@ -18,3 +18,7 @@ import $ from 'jquery';
 
 
 import './js/new.js';
+
+
+
+

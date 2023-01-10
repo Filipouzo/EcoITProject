@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac9f07c2c3aa70a645431d50217df34b",
+    "content-hash": "28218baf02fed0154b9db419cfc73a06",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1781,57 +1781,6 @@
                 }
             ],
             "time": "2022-07-24T11:55:47+00:00"
-        },
-        {
-            "name": "nat/deploy",
-            "version": "1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nathalie-Verdavoir/deploy-heroku.git",
-                "reference": "91328f9b3da25a5aa033de608e4cf4d7660b41fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nathalie-Verdavoir/deploy-heroku/zipball/91328f9b3da25a5aa033de608e4cf4d7660b41fa",
-                "reference": "91328f9b3da25a5aa033de608e4cf4d7660b41fa",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5|>=8.0.0",
-                "symfony/process": ">=5.1.0|^6.1.0"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "Nat\\DeployBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "mit"
-            ],
-            "authors": [
-                {
-                    "name": "Nathalie Verdavoir",
-                    "email": "nathalie.verdavoir@laposte.net",
-                    "homepage": "https://www.linkedin.com/in/nathalie-verdavoir/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Add command line to deploy a symfony project on Heroku",
-            "homepage": "https://www.linkedin.com/in/nathalie-verdavoir/",
-            "keywords": [
-                "ClearDB",
-                "bundle",
-                "deploy",
-                "heroku",
-                "symfony"
-            ],
-            "support": {
-                "issues": "https://github.com/Nathalie-Verdavoir/deploy-heroku/issues",
-                "source": "https://github.com/Nathalie-Verdavoir/deploy-heroku/tree/1.3.3"
-            },
-            "time": "2022-08-08T19:06:13+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -5976,21 +5925,21 @@
         },
         {
             "name": "symfony/runtime",
-            "version": "v6.0.8",
+            "version": "v6.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/runtime.git",
-                "reference": "841d3f303349b2f4fbc25c3bd6349a901fb8e0dc"
+                "reference": "e5d4d848656cbb1812d5f911b1bdec205c6e2fac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/runtime/zipball/841d3f303349b2f4fbc25c3bd6349a901fb8e0dc",
-                "reference": "841d3f303349b2f4fbc25c3bd6349a901fb8e0dc",
+                "url": "https://api.github.com/repos/symfony/runtime/zipball/e5d4d848656cbb1812d5f911b1bdec205c6e2fac",
+                "reference": "e5d4d848656cbb1812d5f911b1bdec205c6e2fac",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0|^2.0",
-                "php": ">=8.0.2"
+                "php": ">=8.1"
             },
             "conflict": {
                 "symfony/dotenv": "<5.4"
@@ -6032,7 +5981,7 @@
             "description": "Enables decoupling PHP applications from global state",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/runtime/tree/v6.0.8"
+                "source": "https://github.com/symfony/runtime/tree/v6.1.3"
             },
             "funding": [
                 {
@@ -6048,7 +5997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-12T16:11:42+00:00"
+            "time": "2022-06-27T17:24:16+00:00"
         },
         {
             "name": "symfony/security-bundle",
@@ -8107,63 +8056,6 @@
             "time": "2022-04-28T17:58:29+00:00"
         },
         {
-            "name": "fzaninotto/faker",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5"
-            },
-            "suggest": {
-                "ext-intl": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "support": {
-                "issues": "https://github.com/fzaninotto/Faker/issues",
-                "source": "https://github.com/fzaninotto/Faker/tree/master"
-            },
-            "abandoned": true,
-            "time": "2015-05-29T06:29:14+00:00"
-        },
-        {
             "name": "nikic/php-parser",
             "version": "v4.14.0",
             "source": {
@@ -8481,5 +8373,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
