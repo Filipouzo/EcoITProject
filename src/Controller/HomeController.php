@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Repository\CourseRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,9 +13,9 @@ class HomeController extends AbstractController
 {
 
     #[Route(path: '/', name: 'app_home')]
-    public function index(ManagerRegistry $doctrine) {
+    public function index(CourseRepository $courseRepository,ManagerRegistry $doctrine) {
         $repository = $doctrine->getRepository(persistentObject: Course::class);
-        $courses = $repository->findLastCourses();
+        $courses = $courseRepository->findLastCourses();
         return $this->render('Home/index.html.twig',[
             'courses' => $courses,
             'nomPage' => "Accueil"
