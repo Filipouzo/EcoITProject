@@ -9,13 +9,13 @@
         <h1 class="text-center text-primary mb-5">{{ course.name }}</h1>
         <div class="row">
             <Aside class="col-4">
-                <h4 class="mb-0 text-primary">{{ course.name }}</h4>
+                <h3 class="mb-0 text-primary">{{ course.name }}</h3>
                 <p class="card-text mb-auto">{{ course.description | raw }}</p>
                 <div class="mb-1 text-muted">Rédigé le {{ course.creationDate | date('d/m/Y') }} par {{ course.IsCreatedBy.fullName}}</div>
                 <img src="{{  course.Picture  }}" alt="img-fluid" width="150" Height="150">
 
                 {% for section in sections %}
-                    <h3 href="">{{ section.title }}</h3>
+                    <h2 href="">{{ section.title }}</h2>
                     {% for lesson in section.lessons %}
                         <div>
                             {{ course.id }}

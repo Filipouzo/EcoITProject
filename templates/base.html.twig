@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="index,follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Site de formation à l'éco-conception numérique">
-    <title>{% block title %}EcoIT{% endblock %}</title>
-    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="robots" content="index,follow">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Site de formation à l'éco-conception numérique">
+		<title>
+			{% block title %}EcoIT
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
 
-<body>
-    <div>
-        {% include 'base/header.html.twig'%}
-    </div>
+	<body>
+		<div>
+			{% include 'base/header.html.twig'%}
+		</div>
 
-    <div class="container main-custom">
-        {% block body %}{% endblock %}
-    </div>
+		<div class="container main-custom"> {% block body %}{% endblock %}
+			</div>
 
-    <div>
-            {% include 'base/footer.html.twig'%}
-    </div>
+			<div>
+				{% include 'base/footer.html.twig'%}
+			</div>
 
-    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-</body>
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+			{% endblock %}
+		</body>
 
-</html>
+	</html>
