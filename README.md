@@ -9,8 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <div align="center">
-    <a href="https://eco-it.herokuapp.com/"><img src="public/pictures
-/EcoIT.png" alt="Logo" height="200"></a>
+    <a href="https://eco-it.herokuapp.com/"><img src="public/pictures/EcoIT.png" alt="Logo" height="200"></a>
 </div>
 
 ## About the project
