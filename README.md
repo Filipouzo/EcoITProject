@@ -23,7 +23,7 @@ _Project carried out as part of an evaluation._
 ### Local Deployment
 1. Clone the repository
 ```
-git clone https://github.com/konradcr/EcoIT
+git clone https://github.com/Filipouzo/EcoITProject/
 ```
 2. Navigate to the repository
 ```
